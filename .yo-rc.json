@@ -1,0 +1,9 @@
+{
+  "generator-react-webpack": {
+    "appName": "piratefy-js",
+    "style": "sass",
+    "cssmodules": true,
+    "postcss": true,
+    "generatedWithVersion": 4
+  }
+}
