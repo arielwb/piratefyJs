@@ -1,70 +1,37 @@
-
-
-import React from 'react';
-// import { SpotifyService } from '../../services/spotify.service';
+import React, { Component } from 'react';
 import ListComponent from '../list/list.component';
 
-// class PlaylistComponent extends React.Component {
 
-//     getPlaylists() {
-//         // SpotifyService.getPlaylists()
-//         //     .then((playlists) => {
-//         //         console.log(playlists);
-//         //         this.setState({ data: playlists.body.items });
-//         //     });
-//     }
+class PlaylistComponent extends React.Component {
 
-//     render() {
-//         console.log('props', this.props)
-//         let data = this.props.playlists || [];
-//         let names = data.map(playlist => playlist.name);
-//         // let names = data;
-//         let hasPlaylist = data.length > 0;
-//         return (
-//             <div>
-//                 <button  onClick={listPlaylists()}>GetPlaylists</button>
-//                 <h5 hidden={!hasPlaylist}>User playlists:</h5>
-//                 <ListComponent data={names} />
-//             </div>
-//         );
-//     }
-// }
+    render() {
+        /*return (
+            <div>
+                <button onClick={() => listPlaylists({test: 'test'})}>GetPlaylists</button>
+                <ul>
+                    {this.props.playlists.map(playlist =>
+                        <div
+                            key={playlist.id}
+                            onClick={() => viewPlaylist(playlist.id)}
+                        >{playlist.name}</div>
+                    )}
+                </ul>
+                <ListComponent/>
+            </div>
+        )*/
 
-
-const PlaylistComponent = ({ playlists, viewPlaylist, listPlaylists }) => {
-    console.log(playlists)
-    console.log(viewPlaylist)
-    console.log(listPlaylists)
-    playlists = playlists || [];
-    let test = [
-        {
-          id: 1,
-          name: 'A playlist'
-        },
-        {
-          id: 2,
-          name: 'Another playlist'
-        },
-        {
-          id: 3,
-          name: 'Another playlist test'
-        }
-
-      ]
-    return (
-        <div>
-            <button onClick={() => listPlaylists(test)}>GetPlaylists</button>
-            <ul>
-                {playlists.map(playlist =>
-                    <div
-                        key={playlist.id}
-                        onClick={() => viewPlaylist(playlist.id)}
-                    >{playlist.name}</div>
-                )}
-            </ul>
-        </div>
-    )
+        return (
+            <div className="list-group list-group-flush">
+                <a href="#" className="list-group-item list-group-item-action active">
+                    Cras justo odio
+                </a>
+                <a href="#" className="list-group-item list-group-item-action">Dapibus ac facilisis in <span className="badge badge-primary badge-pill">14</span></a>
+                <a href="#" className="list-group-item list-group-item-action">Morbi leo risus</a>
+                <a href="#" className="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                <a href="#" className="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+            </div>
+        )
+    };
 }
-
 
 export default PlaylistComponent;

@@ -1,5 +1,7 @@
 import React from 'react';
-import { LoginComponent } from '../exports';
+
+import { HeaderComponent } from '../exports';
+import { SonglistComponent } from '../exports';
 import { PlaylistComponent } from '../exports';
 import { ListPlaylists } from '../exports';
 import { ViewPlaylistComponent } from '../exports';
@@ -8,12 +10,22 @@ import './app.css';
 
 class AppComponent extends React.Component {
 
+
   render() {
     return (
-      <div className="index">
-          <LoginComponent />
-          <ListPlaylists />
-          <ViewPlaylistComponent />
+      <div className="container-fluid">
+        <div className="row">
+          <HeaderComponent />
+        </div>
+        <div className="row">
+          <div className="col-md-4">
+            <PlaylistComponent />
+          </div>
+          <div className="col-md-8">
+            <SonglistComponent />
+          </div>
+        </div>
+
       </div>
     );
   }
