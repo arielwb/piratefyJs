@@ -11,7 +11,7 @@ import React, {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
-  viewPlaylist,
+  listSongs,
   listPlaylists
 } from '../actions/';
 import Main from '../components/App';
@@ -29,7 +29,7 @@ class App extends Component {
  */
 App.propTypes = {
   actions: PropTypes.shape({
-    viewPlaylist: PropTypes.func.isRequired,
+    listSongs: PropTypes.func.isRequired,
     listPlaylists: PropTypes.func.isRequired
   }),
   rootReducer: PropTypes.shape({})
@@ -43,7 +43,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   /* Populated by react-webpack-redux:action */
   const actions = {
-    viewPlaylist,
+    listSongs,
     listPlaylists
   };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };

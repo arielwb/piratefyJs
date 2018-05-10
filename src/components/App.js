@@ -1,21 +1,19 @@
 import React from 'react';
 
-import { HeaderComponent } from '../exports';
-import { SonglistComponent } from '../exports';
-import { PlaylistComponent } from '../exports';
-import { ListPlaylists } from '../exports';
-import { ViewPlaylistComponent } from '../exports';
-import LIST_PLAYLISTS from '../actions/const';
+import { HeaderComponent } from './';
+import ListPlaylistsContainer from '../containers/ListPlaylists.container';
+
 import './app.css';
 
 class AppComponent extends React.Component {
 
-
   render() {
+
+    console.log(ListPlaylistsContainer)
     return (
       <div className="container-fluid">
         <HeaderComponent />
-        <ListPlaylists />
+        <ListPlaylistsContainer />
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import listPlaylists from '../actions/listPlaylists';
-import viewPlaylist from '../actions/viewPlaylist';
+import listSongs from '../actions/listSongs';
 
 export default class PlaylistSource {
 
@@ -21,8 +21,7 @@ export default class PlaylistSource {
             return fetch(`http://localhost:8888/getSongs?playlist=${playlistId}`)
                 .then(response => response.json())
                 .then(songs => {
-                    console.log(songs)
-                    dispatch(viewPlaylist(songs))
+                    dispatch(listSongs(songs))
                     return songs;
                 })
                 .catch(err => console.log(err))

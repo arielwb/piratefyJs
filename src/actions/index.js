@@ -7,9 +7,9 @@ import {action1, action2} from '../actions/'
 */
 /* Populated by react-webpack-redux:action */
 import listPlaylists from '../actions/listPlaylists.js';
-import viewPlaylist from '../actions/viewPlaylist.js';
+import listSongs from '../actions/listSongs.js';
 const actions = {
-  viewPlaylist,
+  listSongs,
   listPlaylists
 };
 module.exports = actions;
