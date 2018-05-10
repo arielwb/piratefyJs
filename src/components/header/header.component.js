@@ -24,13 +24,16 @@ class HeaderComponent extends React.Component {
           <hr className="my-4" />
 
           <form>
-            <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Search</label>
-              <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ex. Anitta" />
-              <small id="emailHelp" className="form-text text-muted">Type wath you want.</small>
+
+            <div className="input-group">
+              <input type="email" className="form-control form-control-lg" ref={(input) => this.searchText = input} placeholder="Ex. Anitta" />
+              <div className="input-group-append">
+              <button className="btn btn-primary" type="submit">
+                <i className="fa fa-search"></i>
+              </button>
+              </div>
             </div>
 
-            <button type="submit" className="btn btn-primary">Search</button>
           </form>
         </div>
       </div>

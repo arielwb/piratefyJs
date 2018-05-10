@@ -3,12 +3,14 @@
  * If you change the type from object to something else, do not forget to update
  * src/container/App.js accordingly.
  */
-import { LIST_PLAYLISTS, LIST_SONGS } from '../actions/const';
+import { LIST_PLAYLISTS, LIST_SONGS, PLAY, CHANGE_SONG } from '../actions/const';
 
 const initialState = {
   playlist: [],
   playlistId: null,
-  songs: []
+  songs: [],
+  playStatus: false,
+  currentSong: ''
 };
 
 function reducer(state = initialState, action) {
@@ -19,16 +21,22 @@ function reducer(state = initialState, action) {
 
   switch (action.type) {
     case LIST_PLAYLISTS:
-      let playlistsNextState = Object.assign({}, state, {
+      return Object.assign({}, state, {
         playlist: action.playlist
       })
-      return playlistsNextState;
     case LIST_SONGS:
-      let nextState = Object.assign({}, state, {
+      return Object.assign({}, state, {
         playlistId: action.playlistId,
         songs: action.songs
       });
-      return nextState;
+    case PLAY:
+      return Object.assign({}, state, {
+        playStatus: action.playStatus
+      });
+    case CHANGE_SONG:
+      return Object.assign({}, state, {
+        currentSong: action.newSong
+      });
     default:
       return state;
   }
