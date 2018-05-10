@@ -1,7 +1,7 @@
 import { VIEW_PLAYLIST } from './const';
 
-function action(parameter) {
-  return { type: VIEW_PLAYLIST, parameter };
+function action(songs) {
+  return { type: VIEW_PLAYLIST, songs };
 }
 
 module.exports = action;

@@ -4,31 +4,30 @@ import ListComponent from '../list/list.component';
 
 class PlaylistComponent extends React.Component {
 
+    componentDidMount() {
+        console.log(this.props)
+        this.props.listPlaylists();
+    }
+
+    componentWillReceiveProps() {
+        console.log(this.props)
+        // this.props.listPlaylists();
+    }
+
     render() {
-        /*return (
-            <div>
-                <button onClick={() => listPlaylists({test: 'test'})}>GetPlaylists</button>
-                <ul>
-                    {this.props.playlists.map(playlist =>
-                        <div
-                            key={playlist.id}
-                            onClick={() => viewPlaylist(playlist.id)}
-                        >{playlist.name}</div>
-                    )}
-                </ul>
-                <ListComponent/>
-            </div>
-        )*/
+        console.log(this.props)
 
         return (
             <div className="list-group list-group-flush">
-                <a href="#" className="list-group-item list-group-item-action active">
-                    Cras justo odio
-                </a>
-                <a href="#" className="list-group-item list-group-item-action">Dapibus ac facilisis in <span className="badge badge-primary badge-pill">14</span></a>
-                <a href="#" className="list-group-item list-group-item-action">Morbi leo risus</a>
-                <a href="#" className="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-                <a href="#" className="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+                {
+                    this.props.playlist.map((pl, key) => {
+                        return (
+                            <a key={key} className="list-group-item list-group-item-action" onClick={() => this.props.viewPlaylist(key)}>
+                                {pl.name}
+                            </a>
+                        )
+                    })
+                }
             </div>
         )
     };

@@ -3,17 +3,23 @@ const spotifyAuth = require('./SpotifyAuth');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 
-const expressApp = express();
+const app = express();
 console.log(spotifyAuth)
-expressApp.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/public'))
   .use(cookieParser());
 
-expressApp.get('/login', spotifyAuth.getLogin);
-expressApp.get('/callback', spotifyAuth.getCallback);
-expressApp.get('/refresh_token', spotifyAuth.getRefreshToken);
-expressApp.get('/getPlaylists', spotifyAuth.getPlaylists);
-expressApp.get('/getSongs', spotifyAuth.getSongsFromPlaylist);
-expressApp.get('/success', spotifyAuth.getSuccess);
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+app.get('/login', spotifyAuth.getLogin);
+app.get('/callback', spotifyAuth.getCallback);
+app.get('/refresh_token', spotifyAuth.getRefreshToken);
+app.get('/getPlaylists', spotifyAuth.getPlaylists);
+app.get('/getSongs', spotifyAuth.getSongsFromPlaylist);
+app.get('/success', spotifyAuth.getSuccess);
 
 console.log('Listening on 8888');
-expressApp.listen(8888);
+app.listen(8888);

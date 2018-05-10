@@ -116,21 +116,34 @@ const getCallback = (req, res) => {
 
 const getPlaylists = (req, res) => {
     console.log("Attempt to get playlist from user: ", user);
-    spotifyApi.getUserPlaylists(user.id, {limit: 50})
-        .then((playlists) => {
-            console.log(playlists);
-            res.send(JSON.stringify(playlists));
-        });
+    // spotifyApi.getUserPlaylists(user.id, {limit: 50})
+    //     .then((playlists) => {
+    //         console.log(playlists);
+    //         res.send(JSON.stringify(playlists));
+    //     });
+    res.send(JSON.stringify([{name: 'A playlist'}, {name: 'Another playlist'}]));
 };
 
 const getSongsFromPlaylist = (req, res) => {
-    let playlist =  req.query.plylist;
+    let playlist =  req.query.playlist;
     console.log("Attempt to get songs from playlist: ", playlist);
-    spotifyApi.getPlaylist(user.id, playlist)
-        .then((playlists) => {
-            console.log(playlists);
-            res.send(JSON.stringify(playlists));
-        });
+    // spotifyApi.getPlaylist(user.id, playlist)
+    //     .then((playlists) => {
+    //         console.log(playlists);
+    //         res.send(JSON.stringify(playlists));
+    //     });
+
+    let mock = [
+        {
+            id: 0,
+            songs:[ 'A song', 'Another song']
+        },
+        {
+            id: 1,
+            songs:[ 'Yet a song', 'Yet another song']
+        }
+    ]
+    res.send(JSON.stringify(mock[playlist]));
 };
 
 const getRefreshToken = (req, res) => {

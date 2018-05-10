@@ -14,18 +14,8 @@ class AppComponent extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-        <div className="row">
-          <HeaderComponent />
-        </div>
-        <div className="row">
-          <div className="col-md-4">
-            <PlaylistComponent />
-          </div>
-          <div className="col-md-8">
-            <SonglistComponent />
-          </div>
-        </div>
-
+        <HeaderComponent />
+        <ListPlaylists />
       </div>
     );
   }
