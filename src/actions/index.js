@@ -10,11 +10,15 @@ import listPlaylists from '../actions/listPlaylists';
 import listSongs from '../actions/listSongs';
 import changeSong from '../actions/changeSong';
 import play from '../actions/play';
+import next from '../actions/next';
+import prev from '../actions/prev';
 
 const actions = {
   listSongs,
   listPlaylists,
   changeSong,
-  play
+  play,
+  next,
+  prev
 };
 module.exports = actions;

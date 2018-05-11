@@ -1,2 +1,0 @@
-export const LIST_PLAYLISTS = "LIST_PLAYLISTS";
-export const LIST_SONGS = "LIST_SONGS";

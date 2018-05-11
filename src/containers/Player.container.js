@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { play, changeSong } from '../actions'
+import { play, changeSong, next, prev } from '../actions'
 import { } from '../components';
 
 
@@ -15,23 +15,34 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     play: song => dispatch(play(song)),
-    next: song => dispatch(changeSong(song)),
-    prev: song => dispatch(changeSong(song)),
+    next: song => dispatch(next()),
+    prev: song => dispatch(prev()),
 })
 
 class PlayerContainer extends React.Component {
+
     render() {
+        console.log(this.props)
         return (
             <div className="row">
                 <button className="btn btn-primary" onClick={() => this.props.play(!this.props.playStatus)}>
                     play
-                </button>  
-                <button className="btn btn-primary" onClick={() => this.props.next(33)}>
+                </button>
+                <button className="btn btn-primary" onClick={() => this.props.next()}>
                     next
-                </button>  
+                </button>
+                <button className="btn btn-primary" onClick={() => this.props.prev()}>
+                    prev
+                </button>
 
-                <div> playstatus: <span>{this.props.playStatus}</span></div>
-                <div> currentSong: <span>{this.props.currentSong}</span></div>
+                <div> playstatus: <span>{this.props.playStatus.toString()}</span><br /><br /></div>
+                <div> currentSong:
+                    <span>
+                        {
+                            this.props.currentSong.track ? this.props.currentSong.track.name : ''
+                        }
+                    </span>
+                </div>
             </div>
         );
     }

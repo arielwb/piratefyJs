@@ -2,7 +2,7 @@
 const request = require('request'); // "Request" library
 const querystring = require('querystring');
 const SpotifyWebApi = require('spotify-web-api-node');
-
+const fs = require('fs');
 
 const client_id = '0d19ab0e22d3445b96e1c5c65d16b227'; // Your client id
 const client_secret = 'b659dd6db6554dfc814536c0a03787e9'; // Your secret
@@ -105,7 +105,7 @@ const getCallback = (req, res) => {
                         console.log('Something went wrong!', err);
                     });
             } else {
-                res.redirect('/#' + 
+                res.redirect('/#' +
                     querystring.stringify({
                         error: 'invalid_token'
                     }));
@@ -116,16 +116,20 @@ const getCallback = (req, res) => {
 
 const getPlaylists = (req, res) => {
     console.log("Attempt to get playlist from user: ", user);
+    console.log()
+    getMock('playlists', null, data => {
+        res.send(data);
+    })
     // spotifyApi.getUserPlaylists(user.id, {limit: 50})
     //     .then((playlists) => {
     //         console.log(playlists);
     //         res.send(JSON.stringify(playlists));
     //     });
-    res.send(JSON.stringify([{name: 'A playlist'}, {name: 'Another playlist'}]));
+
 };
 
 const getSongsFromPlaylist = (req, res) => {
-    let playlist =  req.query.playlist;
+    let playlist = req.query.playlist;
     console.log("Attempt to get songs from playlist: ", playlist);
     // spotifyApi.getPlaylist(user.id, playlist)
     //     .then((playlists) => {
@@ -133,17 +137,11 @@ const getSongsFromPlaylist = (req, res) => {
     //         res.send(JSON.stringify(playlists));
     //     });
 
-    let mock = [
-        {
-            id: 0,
-            songs:[ 'A song', 'Another song']
-        },
-        {
-            id: 1,
-            songs:[ 'Yet a song', 'Yet another song']
-        }
-    ]
-    res.send(JSON.stringify(mock[playlist]));
+    getMock('songs', null, data => {
+        let songs = JSON.parse(data);
+        res.send(JSON.stringify(songs[playlist]));
+    })
+    
 };
 
 const getRefreshToken = (req, res) => {
@@ -169,6 +167,17 @@ const getRefreshToken = (req, res) => {
         }
     });
 };
+
+const getMock = (file, id, cb) => {
+
+    fs.readFile(`./${file}.json`, 'utf8', function (err, data) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log(data);
+        cb(data);
+    });
+}
 
 module.exports = {
     getLogin,

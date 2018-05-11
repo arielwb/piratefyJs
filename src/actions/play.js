@@ -1,8 +1,8 @@
 import { PLAY } from './const';
 
-function action(status) {
-  console.log('action play param', status)
-  return { type: PLAY, status };
+function action(playStatus) {
+  console.log('action play param', playStatus)
+  return { type: PLAY, playStatus };
 }
 
 module.exports = action;

@@ -8,7 +8,7 @@ export default class PlaylistSource {
             return fetch('http://localhost:8888/getPlaylists')
                 .then(response => response.json())
                 .then(playlists => {
-                    dispatch(listPlaylists(playlists))
+                    dispatch(listPlaylists(playlists.body.items))
                     return playlists;
                 })
                 .catch(err => console.log(err))
@@ -21,7 +21,7 @@ export default class PlaylistSource {
             return fetch(`http://localhost:8888/getSongs?playlist=${playlistId}`)
                 .then(response => response.json())
                 .then(songs => {
-                    dispatch(listSongs(songs))
+                    dispatch(listSongs(songs.body))
                     return songs;
                 })
                 .catch(err => console.log(err))

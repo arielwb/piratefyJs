@@ -1,8 +1,8 @@
 import { CHANGE_SONG } from './const';
 
-function action(songId) {
-  console.log('action CHANGE_SONG param', songId)
-  return { type: CHANGE_SONG, songId };
+function action(newSong) {
+  console.log('action CHANGE_SONG param', newSong)
+  return { type: CHANGE_SONG, newSong };
 }
 
 module.exports = action;
