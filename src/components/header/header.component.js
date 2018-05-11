@@ -16,7 +16,7 @@ class HeaderComponent extends React.Component {
   render() {
 
     return (
-      <div className="row">
+      <div id="header">
         <div className="jumbotron w-100" >
           <h1 className="display-4">Piratefy </h1>
           <button type="button" onClick={this.login} className="btn btn-primary float-right">Spotify login</button>

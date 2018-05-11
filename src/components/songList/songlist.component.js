@@ -8,7 +8,7 @@ class SonglistComponent extends React.Component {
         this.songs = [];
 
         this.loadSongs(this.props);
-        console.log('SonglistComponent',this.props)
+        console.log('SonglistComponent', this.props)
     }
 
     loadSongs(payload) {
@@ -22,18 +22,20 @@ class SonglistComponent extends React.Component {
     }
 
     render() {
-        console.log('SonglistComponent',this.props)
+        console.log('SonglistComponent', this.props)
         return (
-            <div className="list-group list-group-flush">
-                {
-                    this.songs.map((song, key) => {
-                        return (
-                            <a key={key} className="list-group-item list-group-item-action" onClick={() => this.props.changeSong(song)}>
-                                {song.track.name}
-                            </a>
-                        )
-                    })
-                }
+            <div className="list-container">
+                <div className="list-group list-group-flush">
+                    {
+                        this.songs.map((song, key) => {
+                            return (
+                                <a key={key} className="list-group-item list-group-item-action" onClick={() => this.props.changeSong(song)}>
+                                    {song.track.name}
+                                </a>
+                            )
+                        })
+                    }
+                </div>
             </div>
         )
     };

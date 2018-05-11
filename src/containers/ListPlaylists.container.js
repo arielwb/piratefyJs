@@ -21,12 +21,14 @@ const mapDispatchToProps = dispatch => ({
 class ListPlaylistsContainer extends React.Component {
     render() {
         return (
-            <div className="row">
-                <div className="col-md-4">
-                    <PlaylistComponent {...this.props} />
-                </div>
-                <div className="col-md-8">
-                    <SonglistComponent {...this.props} />
+            <div className="content-wrapper ">
+                <div className="row content-wrapper">
+                    <div className="col-md-4">
+                        <PlaylistComponent {...this.props} />
+                    </div>
+                    <div className="col-md-8">
+                        <SonglistComponent {...this.props} />
+                    </div>
                 </div>
             </div>
         );

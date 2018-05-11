@@ -24,7 +24,7 @@ class PlayerContainer extends React.Component {
     render() {
         console.log(this.props)
         return (
-            <div className="row">
+            <div id="player-bar" >
                 <button className="btn btn-primary" onClick={() => this.props.play(!this.props.playStatus)}>
                     play
                 </button>

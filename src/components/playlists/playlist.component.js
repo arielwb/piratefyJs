@@ -10,16 +10,18 @@ class PlaylistComponent extends React.Component {
 
     render() {
         return (
-            <div className="list-group list-group-flush">
-                {
-                    this.props.playlists.map((pl, key) => {
-                        return (
-                            <a key={key} className="list-group-item list-group-item-action" onClick={() => this.props.listSongs(pl.id)}>
-                                {pl.name}
-                            </a>
-                        )
-                    })
-                }
+            <div className="list-container">
+                <div className="list-group list-group-flush">
+                    {
+                        this.props.playlists.map((pl, key) => {
+                            return (
+                                <a key={key} className="list-group-item list-group-item-action" onClick={() => this.props.listSongs(pl.id)}>
+                                    {pl.name}
+                                </a>
+                            )
+                        })
+                    }
+                </div>
             </div>
         )
     };
