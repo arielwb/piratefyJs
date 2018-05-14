@@ -4,7 +4,6 @@ import { listSongs, listPlaylists, changeSong } from '../actions'
 import { HeaderComponent } from '../components';
 
 const mapStateToProps = state => {
-    console.log('mapStateToProps:playlist', state)
     return ({
         playlists: state.rootReducer.playlists,
         currentPlaylist: state.rootReducer.currentPlaylist,

@@ -9,16 +9,24 @@ import {
   PLAY,
   CHANGE_SONG,
   NEXT,
-  PREV
+  PREV,
+  DOWNLOAD,
+  DOWNLOAD_STACK_ADD,
+  DOWNLOAD_BEGIN
 } from '../actions/const';
 
 const initialState = {
   currentPlaylist: {},
   currentSong: {},
   playlists: [],
+  downloadStack: [],
+  currentDownload: {},
+  localFiles: [],
   playStatus: false
 };
 
+
+//TODO:split reducers by logical application
 function reducer(state = initialState, action) {
   /* Keep the reducer clean - do not mutate the original state. */
   // const nextState = Object.assign({}, state);
@@ -40,16 +48,38 @@ function reducer(state = initialState, action) {
   switch (action.type) {
     case LIST_PLAYLISTS:
       return getNewState({ playlists: action.playlists })
+
     case LIST_SONGS:
       return getNewState({ currentPlaylist: action.currentPlaylist });
+
     case PLAY:
       return getNewState({ playStatus: action.playStatus });
+
     case CHANGE_SONG:
-    console.log('actionbbb', action)
       return getNewState({
         currentSong: action.newSong,
         playStatus: true
       })
+
+    case DOWNLOAD_STACK_ADD:
+      let isDownloaded = state.localFiles.some(track => track.id === action.track.id)
+
+      return isDownloaded ? state : getNewState({
+        downloadStack: state.downloadStack.concat(action.track)
+      })
+
+    case DOWNLOAD:
+      return getNewState({
+        currentDownload: {},
+        downloadStack: state.downloadStack.filter(track => track.id !== action.track.id),
+        localFiles: state.localFiles.concat(action.track)
+      })
+
+    case DOWNLOAD_BEGIN:
+      return getNewState({
+        currentDownload: action.track
+      })
+
     case NEXT:
       let nextChanges = {};
 
@@ -60,8 +90,8 @@ function reducer(state = initialState, action) {
         nextChanges.playStatus = true;
       }
       return getNewState(nextChanges)
+
     case PREV:
-      console.log(action)
       let prevChanges = {};
 
       if (currentSongIndex > -1) {
@@ -71,6 +101,7 @@ function reducer(state = initialState, action) {
         prevChanges.playStatus = true;
       }
       return getNewState(prevChanges)
+
     default:
       return state;
   }

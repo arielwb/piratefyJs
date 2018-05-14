@@ -12,6 +12,9 @@ import changeSong from '../actions/changeSong';
 import play from '../actions/play';
 import next from '../actions/next';
 import prev from '../actions/prev';
+import download from '../actions/download';
+import downloadStackAdd from '../actions/downloadStackAdd';
+import downloadBegin from '../actions/downloadBegin';
 
 const actions = {
   listSongs,
@@ -19,6 +22,9 @@ const actions = {
   changeSong,
   play,
   next,
-  prev
+  prev,
+  download,
+  downloadStackAdd,
+  downloadBegin
 };
 module.exports = actions;

@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 class PlaylistComponent extends React.Component {
 
     componentDidMount() {
-        console.log(this.props)
         this.props.listPlaylists();
     }
 

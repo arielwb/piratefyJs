@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { listSongs, listPlaylists, changeSong } from '../actions'
 import { PlaylistComponent, SonglistComponent } from '../components';
 import PlaylistSource from '../sources/Playlist.source';
+import PlayerSource from '../sources/Player.source';
 
 const mapStateToProps = state => {
-    console.log('mapStateToProps:playlist', state)
     return ({
         playlists: state.rootReducer.playlists,
         currentPlaylist: state.rootReducer.currentPlaylist,
@@ -15,7 +14,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
     listSongs: id => dispatch(PlaylistSource.getSongs(id)),
     listPlaylists: () => dispatch(PlaylistSource.getPlaylists()),
-    changeSong: song => dispatch(changeSong(song)),
+    changeSong: song => dispatch(PlayerSource.changeSong(song)),
+    downloadStackAdd: track => dispatch(PlayerSource.downloadStackAdd(track))
 })
 
 class ListPlaylistsContainer extends React.Component {

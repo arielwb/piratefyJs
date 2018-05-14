@@ -16,7 +16,6 @@ export default class PlaylistSource {
     }
 
     static getSongs(playlistId) {
-        console.log(playlistId)
         return dispatch => {
             return fetch(`http://localhost:8888/getSongs?playlist=${playlistId}`)
                 .then(response => response.json())
