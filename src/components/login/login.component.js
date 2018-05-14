@@ -4,14 +4,6 @@ import React from 'react';
 
 class LoginComponent extends React.Component {
 
-  constructor() {
-    super();
-  }
-
-  componentDidMount() {
-    console.log('componentDidMount');
-  }
-
   openLoginWindow() {
 
     let width = 450,
@@ -28,10 +20,7 @@ class LoginComponent extends React.Component {
   render() {
 
     return (
-      <div>
-        <h2>Click to login on spotify</h2>
-        <button onClick={this.openLoginWindow}>Login</button>
-      </div>
+      <button type="button" onClick={this.openLoginWindow} className="btn btn-outline-success float-right">Spotify login</button>
     );
   }
 }

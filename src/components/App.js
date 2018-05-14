@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { HeaderComponent } from './';
+import HeaderContainer from '../containers/Header.container';
 import ListPlaylistsContainer from '../containers/ListPlaylists.container';
 import PlayerContainer from '../containers/Player.container';
 
@@ -11,7 +11,7 @@ class AppComponent extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-        <HeaderComponent />
+        <HeaderContainer />
         <ListPlaylistsContainer />
         <PlayerContainer />
       </div>

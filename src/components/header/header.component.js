@@ -1,41 +1,37 @@
 
 
 import React from 'react';
+import { LoginComponent } from '../';
 
 
 class HeaderComponent extends React.Component {
 
-  constructor() {
-    super();
-  }
-
-  login() {
-    console.log('login')
-  }
-
   render() {
-
+    
     return (
       <div id="header">
-        <div className="jumbotron w-100" >
-          <h1 className="display-4">Piratefy </h1>
-          <button type="button" onClick={this.login} className="btn btn-primary float-right">Spotify login</button>
-          <p className="lead">A new way to listen.</p>
-          <hr className="my-4" />
+        <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between border-bottom shadow-sm">
 
-          <form>
+          <a className="navbar-brand" href="#">Piratefy</a>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
 
+          <form className="form-inline my-2 my-lg-0">
             <div className="input-group">
-              <input type="email" className="form-control form-control-lg" ref={(input) => this.searchText = input} placeholder="Ex. Anitta" />
+              <input type="search" className="form-control " ref={(input) => this.searchText = input} placeholder="Ex. Anitta" />
               <div className="input-group-append">
-              <button className="btn btn-primary" type="submit">
-                <i className="fa fa-search"></i>
-              </button>
+                <button className="btn btn-outline-primary" type="submit">
+                  <i className="fa fa-search"></i>
+                </button>
               </div>
             </div>
-
           </form>
-        </div>
+
+          <LoginComponent />
+
+        </nav>
+
       </div>
     );
   }

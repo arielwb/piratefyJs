@@ -10,8 +10,8 @@ class PlaylistComponent extends React.Component {
 
     render() {
         return (
-            <div className="list-container">
-                <div className="list-group list-group-flush">
+            <div className="list-container playlist pt-3 pb-3 pl-4 pr-4">
+                <div className="list-group list-group-flush border shadow-sm">
                     {
                         this.props.playlists.map((pl, key) => {
                             return (

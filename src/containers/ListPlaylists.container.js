@@ -22,7 +22,7 @@ class ListPlaylistsContainer extends React.Component {
     render() {
         return (
             <div className="content-wrapper ">
-                <div className="row content-wrapper">
+                <div className="row content-wrapper no-gutters bg-light" >
                     <div className="col-md-4">
                         <PlaylistComponent {...this.props} />
                     </div>
