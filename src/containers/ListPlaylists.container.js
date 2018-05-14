@@ -8,6 +8,9 @@ const mapStateToProps = state => {
     return ({
         playlists: state.rootReducer.playlists,
         currentPlaylist: state.rootReducer.currentPlaylist,
+        downloadStack: state.rootReducer.downloadStack,
+        currentDownload: state.rootReducer.currentDownload,
+        localFiles: state.rootReducer.localFiles
     })
 }
 

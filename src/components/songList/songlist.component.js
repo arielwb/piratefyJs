@@ -18,6 +18,17 @@ class SonglistComponent extends React.Component {
         this.props.currentPlaylist.tracks.items.map(item => this.props.downloadStackAdd(item.track))
     }
 
+    getDownloadIcon(item) {
+
+        let isLocal = this.props.localFiles.some(local => local.id === item.track.id);
+        let isOnDownloadStack = this.props.downloadStack.some(stack => stack.id === item.track.id);
+        let isCurrentDownload = this.props.currentDownload.id === item.track.id;
+
+        return isCurrentDownload ? 'fa fa-circle-o-notch fa-spin text-success' :
+            isLocal ? 'fa fa-download text-success' :
+                isOnDownloadStack ? 'fa fa-download text-secondary' : '';
+    }
+
     render() {
         let content = null;
         if (Object.keys(this.props.currentPlaylist).length > 0)
@@ -52,6 +63,9 @@ class SonglistComponent extends React.Component {
                                         {
                                             song.track.album.artists.map((artist, i) => <span key={i} className="track-artist">{`${artist.name}${i < song.track.album.artists.length - 1 ? ', ' : ''}`}</span>)
                                         }
+                                        <span className="float-right">
+                                            <i className={this.getDownloadIcon(song)}></i>
+                                        </span>
                                     </a>
                                 )
                             })
