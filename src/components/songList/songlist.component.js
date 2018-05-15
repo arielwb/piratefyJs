@@ -8,6 +8,22 @@ class SonglistComponent extends React.Component {
         this.downloadBtn;
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (Object.keys(nextProps.currentPlaylist).length > 0) {
+
+            let currentPlaylist = nextProps.currentPlaylist.tracks.items;
+            let compare = [];
+            currentPlaylist.forEach(item => {
+                let found = nextProps.localFiles.find(local => item.track.id === local.id)
+                if (found) {
+                    compare.push(found)
+                }
+            })
+
+            this.downloadBtn.checked = compare.length === currentPlaylist.length;
+        }
+    }
+
     minTime(millis) {
         let minutes = Math.floor(millis / 60000);
         let seconds = ((millis % 60000) / 1000).toFixed(0);
@@ -16,11 +32,14 @@ class SonglistComponent extends React.Component {
 
     addToDownloads() {
         let currentPlaylist = this.props.currentPlaylist.tracks.items;
-        if(this.downloadBtn.checked){
-            currentPlaylist.map(item => this.props.downloadStackAdd(item.track))
+        if (this.downloadBtn.checked) {
+            currentPlaylist.forEach(item => {
+                console.log('item.track', item.track)
+                this.props.downloadStackAdd(item.track)
+            });
         }
-        else{
-            currentPlaylist.map(item => this.props.removeLocalFile(item.track))
+        else {
+            currentPlaylist.forEach(item => this.props.removeLocalFile(item.track))
         }
     }
 

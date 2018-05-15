@@ -4,6 +4,7 @@ class PlayerComponent extends React.Component {
     
     componentWillReceiveProps(nextProps) {
         if (nextProps.downloadStack.length > 0 && Object.keys(nextProps.currentDownload).length === 0) {
+            console.log(nextProps.downloadStack[0])
             this.props.download(nextProps.downloadStack[0])
         }
     }

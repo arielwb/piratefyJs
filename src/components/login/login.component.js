@@ -7,7 +7,7 @@ class LoginComponent extends React.Component {
   constructor() {
     super();
     this.spotifyPlayer = null;
-    this.initSpotify();
+    // this.initSpotify();
   }
 
   initSpotify() {
