@@ -12,7 +12,8 @@ import {
   PREV,
   DOWNLOAD,
   DOWNLOAD_STACK_ADD,
-  DOWNLOAD_BEGIN
+  DOWNLOAD_BEGIN,
+  REMOVE_FILE
 } from '../actions/const';
 
 const initialState = {
@@ -78,6 +79,11 @@ function reducer(state = initialState, action) {
     case DOWNLOAD_BEGIN:
       return getNewState({
         currentDownload: action.track
+      })
+    
+      case REMOVE_FILE:
+      return getNewState({
+        localFiles: state.localFiles.filter(item => item.id === action.track.id)
       })
 
     case NEXT:

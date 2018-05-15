@@ -116,32 +116,40 @@ const getCallback = (req, res) => {
 
 const getPlaylists = (req, res) => {
     console.log("Attempt to get playlist from user: ", user);
-    console.log()
-    getMock('playlists', null, data => {
-        res.send(data);
-    })
-    // spotifyApi.getUserPlaylists(user.id, {limit: 50})
-    //     .then((playlists) => {
-    //         console.log(playlists);
-    //         res.send(JSON.stringify(playlists));
-    //     });
+
+    if (Object.keys(user).length > 0 ) {
+        spotifyApi.getUserPlaylists(user.id, { limit: 50 })
+            .then((playlists) => {
+                console.log(playlists);
+                res.send(JSON.stringify(playlists));
+            });
+    }
+    else{
+        getMock('playlists', null, data => {
+            res.send(data);
+        })
+    }
+
 
 };
 
 const getSongsFromPlaylist = (req, res) => {
     let playlist = req.query.playlist;
+    let userId = req.query.userId;
     console.log("Attempt to get songs from playlist: ", playlist);
-    // spotifyApi.getPlaylist(user.id, playlist)
-    //     .then((playlists) => {
-    //         console.log(playlists);
-    //         res.send(JSON.stringify(playlists));
-    //     });
-
-    getMock('songs', null, data => {
-        let songs = JSON.parse(data);
-        res.send(JSON.stringify(songs[playlist]));
-    })
-    
+    if (Object.keys(user).length > 0 ) {
+        spotifyApi.getPlaylist(userId, playlist)
+            .then((playlists) => {
+                console.log(playlists);
+                res.send(JSON.stringify(playlists));
+            });
+    }
+    else{
+        getMock('songs', null, data => {
+            let songs = JSON.parse(data);
+            res.send(JSON.stringify(songs[playlist]));
+        })
+    }
 };
 
 const getRefreshToken = (req, res) => {

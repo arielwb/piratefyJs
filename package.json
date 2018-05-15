@@ -82,6 +82,8 @@
     "redux-thunk": "^2.2.0",
     "spotify-web-api-node": "^3.1.1",
     "webpack": "^2.1.0-beta.6",
-    "youtube-api-v3-search": "^1.0.2"
+    "youtube-api-v3-search": "^1.0.2",
+    "body-parser": "^1.17.1",
+    "ejs": "2.5.6"
   }
 }

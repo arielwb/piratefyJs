@@ -1,4 +1,14 @@
-import { play, next, prev, changeSong, download, downloadStackAdd, downloadBegin } from '../actions';
+import {
+    play,
+    next,
+    prev,
+    changeSong,
+    download,
+    downloadStackAdd,
+    downloadBegin,
+    removeLocalFile
+} from '../actions';
+
 import YoutubeSearch from 'youtube-api-v3-search';
 
 export default class PlayerSource {
@@ -33,6 +43,13 @@ export default class PlayerSource {
                 }))
             })
         }
+    }
+
+    static removeLocalFile(track) {
+        return dispatch => {
+            //TODO: send track for electron deletion
+            setTimeout(() => dispatch(removeLocalFile(track)), 1000);
+        };
     }
 
     static download(track) {

@@ -9,3 +9,4 @@ export const PREV = 'PREV';
 export const DOWNLOAD = 'DOWNLOAD';
 export const DOWNLOAD_STACK_ADD = 'DOWNLOAD:STACK:ADD';
 export const DOWNLOAD_BEGIN = 'DOWNLOAD:BEGIN';
+export const REMOVE_FILE = 'REMOVE_FILE';

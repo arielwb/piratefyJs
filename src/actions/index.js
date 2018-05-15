@@ -16,6 +16,7 @@ import download from '../actions/download';
 import downloadStackAdd from '../actions/downloadStackAdd';
 import downloadBegin from '../actions/downloadBegin';
 
+import removeLocalFile from '../actions/removeLocalFile';
 const actions = {
   listSongs,
   listPlaylists,
@@ -25,6 +26,7 @@ const actions = {
   prev,
   download,
   downloadStackAdd,
-  downloadBegin
+  downloadBegin,
+  removeLocalFile
 };
 module.exports = actions;

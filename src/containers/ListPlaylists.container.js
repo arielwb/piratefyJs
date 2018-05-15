@@ -15,10 +15,11 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    listSongs: id => dispatch(PlaylistSource.getSongs(id)),
+    listSongs: (userId, playlistId) => dispatch(PlaylistSource.getSongs(userId, playlistId)),
     listPlaylists: () => dispatch(PlaylistSource.getPlaylists()),
     changeSong: song => dispatch(PlayerSource.changeSong(song)),
-    downloadStackAdd: track => dispatch(PlayerSource.downloadStackAdd(track))
+    downloadStackAdd: track => dispatch(PlayerSource.downloadStackAdd(track)),
+    removeLocalFile: track => dispatch(PlayerSource.removeLocalFile(track)),
 })
 
 class ListPlaylistsContainer extends React.Component {

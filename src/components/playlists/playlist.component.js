@@ -14,7 +14,7 @@ class PlaylistComponent extends React.Component {
                     {
                         this.props.playlists.map((pl, key) => {
                             return (
-                                <a key={key} className="list-group-item list-group-item-action" onClick={() => this.props.listSongs(pl.id)}>
+                                <a key={key} className="list-group-item list-group-item-action" onClick={() => this.props.listSongs(pl.owner.id, pl.id)}>
                                     {pl.name}
                                 </a>
                             )

@@ -15,7 +15,13 @@ class SonglistComponent extends React.Component {
     }
 
     addToDownloads() {
-        this.props.currentPlaylist.tracks.items.map(item => this.props.downloadStackAdd(item.track))
+        let currentPlaylist = this.props.currentPlaylist.tracks.items;
+        if(this.downloadBtn.checked){
+            currentPlaylist.map(item => this.props.downloadStackAdd(item.track))
+        }
+        else{
+            currentPlaylist.map(item => this.props.removeLocalFile(item.track))
+        }
     }
 
     getDownloadIcon(item) {
@@ -61,7 +67,8 @@ class SonglistComponent extends React.Component {
                                         </div>
                                         <span className="track-album">{song.track.album.name} - </span>
                                         {
-                                            song.track.album.artists.map((artist, i) => <span key={i} className="track-artist">{`${artist.name}${i < song.track.album.artists.length - 1 ? ', ' : ''}`}</span>)
+                                            song.track.album.artists.map(
+                                                (artist, i) => <span key={i} className="track-artist">{`${artist.name}${i < song.track.album.artists.length - 1 ? ', ' : ''}`}</span>)
                                         }
                                         <span className="float-right">
                                             <i className={this.getDownloadIcon(song)}></i>
